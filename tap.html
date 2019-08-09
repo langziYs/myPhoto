@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./tap.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    
+    .box {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .slide {
+        position: absolute;
+        width: 100%;
+        height: 70px;
+        background: skyblue;
+    }
+    
+    .slide dl {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+    }
+    
+    .slide dl dt {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .slide dl dt img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        margin-top: 5px;
+    }
+    
+    .close {
+        position: absolute;
+        right: 0;
+        width: 80px;
+        height: 70px;
+        line-height: 70px;
+        text-align: center;
+        background: tomato;
+        transform: translateX(110%);
+    }
+    
+    .p1 {
+        display: inline-block;
+        margin-top: 10px;
+        margin-left: 20px;
+    }
+    
+    .p2 {
+        display: inline-block;
+        margin-top: 10px;
+        margin-left: 20px;
+    }
+    
+    .two {
+        position: absolute;
+        width: 100%;
+        height: 70px;
+        background: skyblue;
+        margin-top: 70px;
+    }
+    
+    .two dl {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+    }
+    
+    .two dl dt {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .two dl dt img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        margin-top: 5px;
+    }
+    
+    .clear {
+        position: absolute;
+        right: 0;
+        width: 80px;
+        height: 70px;
+        line-height: 70px;
+        text-align: center;
+        background: green;
+        transform: translateX(110%);
+    }
+    
+    .cont {
+        animation: cont 0.5s linear forwards;
+    }
+    
+    .cont2 {
+        animation: cont2 0.5s linear;
+    }
+    
+    @keyframes cont {
+        to {
+            transform: translateX(0);
+        }
+    }
+    
+    @keyframes cont2 {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(110%);
+        }
+    }
+</style>
+
+<body>
+    <div class="box">
+        <div class="slide">
+            <dl>
+                <dt><img src="img/海琴烟冰公主.jpg" alt=""></dt>
+                <dd>
+                    <p class="p1">用户名称</p><br>
+                    <p class="p2">聊天的内容</p>
+                </dd>
+            </dl>
+            <div class="close">删除</div>
+            <div class="two">
+                <dl>
+                    <dt><img src="img/海琴烟冰公主.jpg" alt=""></dt>
+                    <dd>
+                        <p class="p1">用户名称</p><br>
+                        <p class="p2">聊天的内容</p>
+                    </dd>
+                </dl>
+                <div class="clear">删除</div>
+            </div>
+        </div>
+        <script>
+            var slide = document.querySelector('.slide');
+            var close = document.querySelector('.close');
+            var two = document.querySelector('.two');
+            var clear = document.querySelector('.clear');
+
+            myTouch.tap(close, function() {
+                slide.remove();
+            })
+
+            myTouch.swiper(slide, 'left', function() {
+                close.classList.add('cont');
+                close.classList.remove('cont2');
+            })
+            myTouch.swiper(slide, 'right', function() {
+                close.classList.add('cont2');
+                close.classList.remove('cont');
+            })
+
+            // myTouch.tap(clear, function() {
+            //     two.remove();
+            // })
+            // myTouch.swiper(two, 'left', function() {
+            //     clear.classList.add('cont');
+            //     clear.classList.remove('cont2');
+            // })
+            // myTouch.swiper(two, 'right', function() {
+            //     clear.classList.add('cont2');
+            //     clear.classList.remove('cont');
+            // })
+        </script>
+</body>
+
+</html>
